@@ -20,6 +20,5 @@ export function reducer(state: State = initialState, action: counter.Action) {
 }
 
 export const getCurrentCounter = (state: State) => {
-  console.log('get counter in reducer', state);
   return state.counter;
 };

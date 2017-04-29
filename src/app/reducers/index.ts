@@ -29,7 +29,6 @@ export function reducer(state: any, action: any) {
 }
 
 export const getCounter = (state: State) => {
-  console.log('get counter from index.ts reducer', state);
   return state.counter;
 };
 
