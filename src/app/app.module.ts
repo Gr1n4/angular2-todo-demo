@@ -24,7 +24,7 @@ import {reducer} from './reducers';
     FormsModule,
     HttpModule,
     CommonModule,
-    RouterModule.forRoot(routes, {useHash: false}),
+    RouterModule.forRoot(routes, {useHash: true}),
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter()
   ],
