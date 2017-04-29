@@ -1,0 +1,6 @@
+a.board-item(routerLink="/board/{{board.id}}")
+  i.fa.fa-remove.board-item__remove(
+    ngbTooltip="Remove",
+    (click)="removeBoard($event)"
+  )
+  h3 {{board.title}}

@@ -1,0 +1,37 @@
+.board-list
+  h1.board-list__title List of Boards
+  .board-list__list.row
+    .board-list__item.col-md-3(*ngFor="let board of boards$ | async")
+      app-board-item([board]="board", (onRemove)="removeBoardById($event)")
+    .board-list__item.col-md-3(*ngFor="let board of boards$ | async")
+      button.btn.btn-outline-primary(
+        type="button",
+        [ngbPopover]="popCreateBoard",
+        popoverTitle="Create new board"
+        placement="right",
+        #p="ngbPopover"
+      ) Create new board
+
+  pre {{createBoardForm.value | json}}
+  pre {{createBoardForm.status | json}}
+  pre {{p | json}}
+
+ng-template(#popCreateBoard)
+  form([formGroup]="createBoardForm", (ngSubmit)="addBoard($event); p.close()")
+    .form-group
+      label Title:
+        input.form-control(
+          type="text",
+          formControlName="title"
+        )
+      label Description:
+        input.form-control(
+          type="text",
+          formControlName="description"
+        )
+    button.btn.btn-success(
+      type="submit",
+      [disabled]="createBoardForm.pristine"
+    ) Create
+
+

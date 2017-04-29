@@ -6,14 +6,17 @@ import {compose} from '@ngrx/core/compose';
 import {storeFreeze} from 'ngrx-store-freeze';
 
 import * as fromCounter from './counter';
+import * as fromBoard from './board';
 
 export interface State {
   counter: fromCounter.State; // State store from reducers/counter.ts
+  board: fromBoard.State;
   router: fromRouter.RouterState;
 }
 
 const reducers = {
   counter: fromCounter.reducer,
+  board: fromBoard.reducer,
   router: fromRouter.routerReducer
 };
 
