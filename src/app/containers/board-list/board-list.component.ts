@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import {FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 
@@ -21,8 +21,7 @@ export class BoardListComponent implements OnInit {
   constructor(private store: Store<fromRoot.State>, private formBuilder: FormBuilder) {
     this.boards$ = this.store.select(getBoards);
     this.createBoardForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      description: ''
+      title: ['', Validators.required]
     });
   }
 
@@ -30,14 +29,14 @@ export class BoardListComponent implements OnInit {
   }
 
   removeBoardById(id: number) {
-    console.log('id', arguments);
+    this.store.dispatch(new actions.RemoveBoard(id));
   }
 
-  addBoard(event) {
+  addBoard(event, popover) {
     event.preventDefault();
-    const {title, description} = this.createBoardForm.value;
-    this.store.dispatch(new actions.AddBoard(new Board(title, description)));
-    // this.p.close();
+    popover.close();
+    const {title} = this.createBoardForm.value;
+    this.store.dispatch(new actions.AddBoard(new Board(title)));
   }
 
 }

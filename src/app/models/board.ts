@@ -1,16 +1,14 @@
 export interface IBoard {
   id: number;
   title: string;
-  description: string;
 }
 
 export class Board {
-  id: number = Date.now();
+  id: number;
   title: string;
-  description: string;
 
-  constructor(title: string, description: string) {
+  constructor(title: string) {
+    this.id = Date.now();
     this.title = title;
-    this.description = description;
   }
 }
