@@ -1,6 +1,18 @@
-p board works!
-pre {{lists$ | async | json}}
-p by id
-pre {{list$ | async | json}}
-p board by id
-pre {{board$ | async | json}}
+.board
+  .col-md-12
+    .row
+      h3.col-md-5(*ngIf="!toggleBoardTitle", (click)="editBoardTitle()") {{board.title}}
+      form.col-md-5(
+        [formGroup]="formBoardTitle",
+        *ngIf="toggleBoardTitle",
+        (ngSubmit)="changeTitle($event)"
+      )
+        .form-group
+          input.form-control(
+            type="text",
+            formControlName="title",
+            (keyup)="viewBoardTitle($event)"
+          )
+    .row
+      .col-md-12
+        app-list-list

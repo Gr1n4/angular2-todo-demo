@@ -15,13 +15,19 @@ import { CounterComponent } from './containers/counter/counter.component';
 
 import {routes} from './routes';
 import {reducer} from './reducers';
+
 import { BoardComponent } from './containers/board/board.component';
 import { CardComponent } from './containers/card/card.component';
 import { TaskComponent } from './containers/task/task.component';
 import { BoardListComponent } from './containers/board-list/board-list.component';
+import {ListListComponent} from './containers/list-list/list-list.component';
 
 import {HeaderComponent} from './components/header/header.component';
-import { BoardItemComponent } from './components/board-item/board-item.component';
+import {BoardItemComponent} from './components/board-item/board-item.component';
+import {ListComponent} from './components/list/list.component';
+
+import {BoardService} from './services/board.service';
+import {ListService} from './services/list.service';
 
 @NgModule({
   declarations: [
@@ -32,9 +38,11 @@ import { BoardItemComponent } from './components/board-item/board-item.component
     CardComponent,
     TaskComponent,
     BoardListComponent,
+    ListListComponent,
     // Components
     HeaderComponent,
-    BoardItemComponent
+    BoardItemComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,10 @@ import { BoardItemComponent } from './components/board-item/board-item.component
     StoreModule.provideStore(reducer),
     RouterStoreModule.connectRouter()
   ],
-  providers: [],
+  providers: [
+    BoardService,
+    ListService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

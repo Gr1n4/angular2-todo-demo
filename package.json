@@ -9,7 +9,10 @@
     "build:prod": "node_modules/.bin/ng build --prod --aot=false",
     "test": "node_modules/.bin/ng test",
     "lint": "node_modules/.bin/ng lint",
-    "e2e": "node_modules/.bin/ng e2e"
+    "e2e": "node_modules/.bin/ng e2e",
+    "clear": "node_modules/.bin/rimraf node_modules && node_modules/.bin/rimraf dist",
+    "clear:build" : "node_modules/.bin/rimraf dist",
+    "clear:all": "npm run clear"
   },
   "private": true,
   "dependencies": {
@@ -53,6 +56,7 @@
     "protractor": "~5.1.0",
     "pug": "^2.0.0-beta.12",
     "pug-loader": "^2.3.0",
+    "rimraf": "^2.6.1",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.2.0"

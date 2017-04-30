@@ -1,0 +1,8 @@
+.list-list
+  .list-list__item(
+    *ngFor="let list of lists; let f = first",
+    [ngClass]="{'list-list__item--first': f}"
+  )
+    app-list([list]="list")
+  .list-list__item.list-list__add
+    span Add list...
