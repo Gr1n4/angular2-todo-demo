@@ -25,10 +25,11 @@ import {ListListComponent} from './containers/list-list/list-list.component';
 import {HeaderComponent} from './components/header/header.component';
 import {BoardItemComponent} from './components/board-item/board-item.component';
 import {ListComponent} from './components/list/list.component';
+import {TitleEditComponent} from './components/title-edit/title-edit.component';
 
 import {BoardService} from './services/board.service';
 import {ListService} from './services/list.service';
-import { TitleEditComponent } from './components/title-edit/title-edit.component';
+import {CardService} from './services/card.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { TitleEditComponent } from './components/title-edit/title-edit.component
   ],
   providers: [
     BoardService,
-    ListService
+    ListService,
+    CardService
   ],
   bootstrap: [AppComponent]
 })
