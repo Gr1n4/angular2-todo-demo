@@ -8,11 +8,13 @@ import {storeFreeze} from 'ngrx-store-freeze';
 import * as fromCounter from './counter';
 import * as fromBoard from './board';
 import * as fromList from './list';
+import * as fromCard from './card';
 
 export interface State { // TODO: Need rename to RootState!!!
   counter: fromCounter.State; // State store from reducers/counter.ts
   board: fromBoard.State;
   list: fromList.State;
+  card: fromCard.State;
   router: fromRouter.RouterState;
 }
 
@@ -20,6 +22,7 @@ const reducers = {
   counter: fromCounter.reducer,
   board: fromBoard.reducer,
   list: fromList.reducer,
+  card: fromCard.reducer,
   router: fromRouter.routerReducer
 };
 
