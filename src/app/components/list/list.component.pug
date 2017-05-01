@@ -2,6 +2,9 @@
   h2.list-header__title {{list.title}}
   .list-header__actions--toggle
     i.fa.fa-ellipsis-h
+.list-card
+  app-card-list([listId]="list.id")
 .add-card
   .add-card__toggle
-    span Add card...
+    app-title-edit((onSubmit)="createCard($event)")
+      span Add card...

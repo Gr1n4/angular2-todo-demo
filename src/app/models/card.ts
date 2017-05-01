@@ -16,6 +16,7 @@ export class Card implements ICard {
   constructor(
     {title, description, listId}: ICard
   ) {
+
     this.id = Date.now();
     this.title = title;
     this.description = description ? description : '';

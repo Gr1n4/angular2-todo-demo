@@ -1,1 +1,3 @@
-p card-list works!
+.card-list
+  .card-list__item(*ngFor="let card of cards")
+    app-card-item([card]="card")

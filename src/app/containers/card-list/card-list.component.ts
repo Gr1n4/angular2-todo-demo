@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+
+import {ICard} from '../../models/card';
+import {CardService} from '../../services/card.service';
 
 @Component({
   selector: 'app-card-list',
@@ -6,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-list.component.sass']
 })
 export class CardListComponent implements OnInit {
+  @Input() listId: number;
+  cards$: Observable<ICard[]>;
+  cards: ICard[];
 
-  constructor() { }
+  constructor(
+    private cardService: CardService
+  ) {}
 
   ngOnInit() {
+    this.cards$ = this.cardService.getCardsByListId(this.listId);
+    this.cards$.subscribe(cards => this.cards = cards);
   }
 
 }

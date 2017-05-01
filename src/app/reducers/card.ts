@@ -48,4 +48,12 @@ export function reducer(state: State = initialState, {type, payload}): State {
 }
 
 export const getCards = (state: State) => state;
-export const getCardsByListId = (listId: number) => (state: State) => state.filter(card => card.listId === listId);
+// export const getCardsByListId = (listId: number) => (state: State) => state.filter(card => card.listId === listId);
+export const getCardsByListId = (listId: number) => {
+  console.log('lsit id ', listId);
+  return (state: State) => {
+    return state.filter(card => {
+      return card.listId === listId;
+    });
+  };
+};

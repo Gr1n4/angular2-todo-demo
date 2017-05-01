@@ -13,14 +13,14 @@ export const TOGGLE_COMPLETED_CARD = `${prefix} Toggle completed`;
 export class AddCard implements Action {
   readonly type = ADD_CARD;
 
-  constructor(payload: ICard) {}
+  constructor(public payload: ICard) {}
 }
 
 export class UpdateCard implements Action {
   readonly type = UPDATE_CARD;
 
   constructor(
-    payload: {
+    public payload: {
       id: number,
       title?: string,
       description?: string
@@ -31,19 +31,19 @@ export class UpdateCard implements Action {
 export class RemoveCard implements Action {
   readonly type = REMOVE_CARD;
 
-  constructor(payload: number) {}
+  constructor(public payload: number) {}
 }
 
 export class RemoveCardByList implements Action {
   readonly type = REMOVE_CARD_BY_LIST;
 
-  constructor(payload: number) {}
+  constructor(public payload: number) {}
 }
 
 export class ToggleCompletedCard implements Action {
   readonly type = TOGGLE_COMPLETED_CARD;
 
-  constructor(payload: number) {}
+  constructor(public payload: number) {}
 }
 
 export type Action

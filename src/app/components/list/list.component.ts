@@ -1,5 +1,6 @@
 import {Component, Input, Output} from '@angular/core';
 import {List} from '../../models/list';
+import {CardService} from '../../services/card.service';
 
 @Component({
   selector: 'app-list',
@@ -9,4 +10,9 @@ import {List} from '../../models/list';
 export class ListComponent {
   @Input() list: List;
 
+  constructor(private cardService: CardService) {}
+
+  createCard(title) {
+    this.cardService.createCard(title, this.list.id);
+  }
 }

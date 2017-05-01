@@ -1,1 +1,5 @@
-p card-item works!
+.card-item
+  .card-item__title {{card.title}}
+  .card-item__badge
+    .card-item__badge--description(*ngIf="card.description && card.description.length")
+      i.fa.fa-bar-chart
