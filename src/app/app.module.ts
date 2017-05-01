@@ -28,6 +28,7 @@ import {ListComponent} from './components/list/list.component';
 
 import {BoardService} from './services/board.service';
 import {ListService} from './services/list.service';
+import { TitleEditComponent } from './components/title-edit/title-edit.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {ListService} from './services/list.service';
     // Components
     HeaderComponent,
     BoardItemComponent,
-    ListComponent
+    ListComponent,
+    TitleEditComponent
   ],
   imports: [
     BrowserModule,

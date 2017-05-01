@@ -14,6 +14,7 @@ import {ListService} from '../../services/list.service';
 export class ListListComponent implements OnInit {
   lists$: Observable<IList[]>;
   lists: IList[];
+  boardId: number;
 
   constructor(
     private _route: ActivatedRoute,
@@ -30,10 +31,15 @@ export class ListListComponent implements OnInit {
   }
 
   private initListByBoardId(id: string) {
-    this.lists$ = this.listService.getListsByBoard(Number(id));
+    this.boardId = Number(id);
+    this.lists$ = this.listService.getListsByBoard(this.boardId);
     this.lists$
       .subscribe((lists: IList[]) => {
         this.lists = lists;
       });
+  }
+
+  createList(title: string) {
+    this.listService.createList(title, this.boardId);
   }
 }

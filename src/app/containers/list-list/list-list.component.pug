@@ -5,4 +5,5 @@
   )
     app-list([list]="list")
   .list-list__item.list-list__add
-    span Add list...
+    app-title-edit((onSubmit)="createList($event)")
+      span Add list...
