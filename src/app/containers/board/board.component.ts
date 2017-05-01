@@ -32,12 +32,20 @@ export class BoardComponent implements OnInit {
   constructor(
     private store: Store<fromRoot.State>,
     private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
     private boardService: BoardService
   ) {
     this.formBoardTitle = this.formBuilder.group({
       title: ['', Validators.required]
     });
+
+    // console.log('route test', this.router);
+    // console.log('checkUrl', this.checkUrl(this.router.routerState.snapshot.url));
+  }
+
+  private checkUrl(str) {
+    return /board\/[0-9]+/.test(str);
   }
 
   ngOnInit() {

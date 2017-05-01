@@ -1,5 +1,5 @@
 .board
-  .col-md-12
+  .col-md-12(*ngIf="board")
     .row
       h3.col-md-5(*ngIf="!toggleBoardTitle", (click)="editBoardTitle()") {{board.title}}
       form.col-md-5(
@@ -16,3 +16,5 @@
     .row
       .col-md-12
         app-list-list
+  .col-md-12(*ngIf="!board")
+    h1 404 This board not found!
