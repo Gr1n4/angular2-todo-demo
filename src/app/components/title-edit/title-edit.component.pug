@@ -4,7 +4,7 @@
 )
   ng-content
 .edit-mode(
-  *ngIf="view.mode",
+  [hidden]="!view.mode",
 )
   form([formGroup]="formCreateList", (ngSubmit)="submitForm($event)")
     .form-group
@@ -12,6 +12,8 @@
         input.form-control(
           type="text",
           formControlName="title"
-          placeholder="Add list..."
+          placeholder="Add list...",
+          #title
+          required
         )
 //pre([ngStyle]="{'color': 'red'}") {{view | json}}

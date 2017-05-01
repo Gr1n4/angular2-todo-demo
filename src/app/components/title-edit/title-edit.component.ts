@@ -1,5 +1,14 @@
-import {Component, OnInit, OnDestroy, ChangeDetectorRef, ChangeDetectionStrategy, Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+  ViewChild
+} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
 import {Subscription} from 'rxjs/Subscription';
 import 'rxjs/observable/fromEvent';
@@ -14,6 +23,7 @@ import * as _ from 'lodash';
 })
 export class TitleEditComponent implements OnInit, OnDestroy {
   @Output() onSubmit: EventEmitter<string> = new EventEmitter();
+  @ViewChild('title') inputTitle;
   view: {
     mode: boolean
   };
@@ -29,7 +39,7 @@ export class TitleEditComponent implements OnInit, OnDestroy {
       mode: false
     };
     this.formCreateList = this.formBuilder.group({
-      title: ['']
+      title: ['', Validators.required]
     });
   }
 
@@ -51,6 +61,9 @@ export class TitleEditComponent implements OnInit, OnDestroy {
 
   editMode() {
     this.view.mode = true;
+    setTimeout(() => { // TODO: Need understand how to remove timeout.
+      this.inputTitle.nativeElement.focus();
+    });
     this.onBodyClickSub = this.onBodyClick
       .subscribe(e => {
         if (this.checkPathViewMode(e.path)) {
@@ -73,9 +86,13 @@ export class TitleEditComponent implements OnInit, OnDestroy {
   }
 
   submitForm(event) {
+    if (this.formCreateList.status === 'INVALID') {
+      return;
+    }
     event.preventDefault();
     this.viewMode();
     this.onSubmit.emit(this.formCreateList.value.title);
+    this.formCreateList.setValue({title: ''});
   }
 
   private checkPathViewMode(path) {
